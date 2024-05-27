@@ -1,0 +1,18 @@
+﻿@model string
+
+@if (Model is null || Model == string.Empty)
+{
+    <a class="nav-link text-dark"
+       asp-area=""
+       asp-controller="Account"
+       asp-action="Login">
+        Login
+    </a>
+    return;
+}
+<a class="nav-link text-dark"
+   asp-area=""
+   asp-controller="Account"
+   asp-action="Logout">
+    Logout
+</a>

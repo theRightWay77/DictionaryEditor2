@@ -27,7 +27,8 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(c
 builder.Services.AddTransient<RussianWordsDbRepository>();
 builder.Services.AddTransient<OssetianWordsDbRepository>();
 builder.Services.AddTransient<ExamplesDbRepository>();
-
+builder.Services.AddTransient<UserDbRepository>();
+builder.Services.AddTransient<RoleDbRepository>();
 
 var app = builder.Build();
 
