@@ -10,7 +10,7 @@
         {
             <div class="research-mod__words-list__one-word">
             <div class="btn-outline-secondary research-mod__words-list-osset ">
-                <a>@word.Word</a>
+                    <a asp-controller="ResearchMod" asp-action="OneWord" asp-route-id="@word.Id">@word.Word</a>
             </div>
             <div class="btn-outline-secondary research-mod__words-list-russ">
                 <a>@word.RussianWords.FirstOrDefault(new RussianWord{Id=Guid.NewGuid(), Word="-"}).Word</a>

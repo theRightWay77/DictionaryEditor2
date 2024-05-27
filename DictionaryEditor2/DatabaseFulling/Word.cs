@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
-namespace DictionaryEditor.Models
+namespace DictionaryEditor2.DatabaseFulling
 {
     public class Word
     {

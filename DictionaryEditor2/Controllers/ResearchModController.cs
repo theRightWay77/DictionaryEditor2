@@ -2,7 +2,7 @@
 using DictionaryEditor.Db.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DictionaryEditor2.Admin.Controllers
+namespace DictionaryEditor2.Controllers
 {
     public class ResearchModController : Controller
     {
@@ -16,6 +16,12 @@ namespace DictionaryEditor2.Admin.Controllers
         {
             List<OssetianWord> wordsList = ossetianWordsDbRepository.GetProducts();
             return View(wordsList);
+        }
+
+        public IActionResult OneWord(Guid id)
+        {
+            OssetianWord ossetianWord = ossetianWordsDbRepository.TryGetById(id);
+            return View(ossetianWord);
         }
     }
 }

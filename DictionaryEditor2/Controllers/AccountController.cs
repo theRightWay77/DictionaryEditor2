@@ -33,17 +33,17 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Login(AutorizationData autorizationData)
         {
             if (!ModelState.IsValid)
-                return View(nameof(Index));
+                return View();
             var user = userRepository.TryGetByLogin(autorizationData.Login);
             if (user is null)
             {
                 ModelState.AddModelError("", "Пользователя с таким логином не существует!");
-                return View(nameof(Index));
+                return View();
             }
             if (autorizationData.Password != user.Password)
             {
                 ModelState.AddModelError("", "Введен неверный пароль!");
-                return View(nameof(Index));
+                return View();
             }
             var cookieOptions = new CookieOptions();
             if (autorizationData.LockoutEnabled)
@@ -61,7 +61,7 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Register(RegistrationData registrationData)
         {
             if (!ModelState.IsValid)
-                return View(nameof(Index));
+                return View();
             userRepository.Add(new User()
             {
                 Role = roleRepository.TryGetByName("User"),
@@ -70,7 +70,7 @@ namespace OnlineShopWebApp.Controllers
                 Name = registrationData.Name,
                 Surname = registrationData.Surname
             });
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Login));
         }
 
         public IActionResult Logout()

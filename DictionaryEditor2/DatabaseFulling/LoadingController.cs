@@ -1,6 +1,5 @@
 ﻿using DictionaryEditor.Db;
 using DictionaryEditor.Db.Models;
-using DictionaryEditor.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Newtonsoft.Json;
@@ -10,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DictionaryEditor2.Controllers
+namespace DictionaryEditor2.DatabaseFulling
 {
     public class LoadingController : Controller
     {
@@ -22,9 +21,9 @@ namespace DictionaryEditor2.Controllers
         private readonly RoleDbRepository roleRepository;
         private readonly DictionariesRepository dictionariesDbRepository;
 
-        public LoadingController(DatabaseContext databaseContext, 
-            RussianWordsDbRepository russianWordsDbRepository, 
-            OssetianWordsDbRepository ossetianWordsDbRepository, 
+        public LoadingController(DatabaseContext databaseContext,
+            RussianWordsDbRepository russianWordsDbRepository,
+            OssetianWordsDbRepository ossetianWordsDbRepository,
             ExamplesDbRepository examplesDbRepository,
             UserDbRepository userRepository,
             RoleDbRepository roleRepository,
@@ -52,7 +51,7 @@ namespace DictionaryEditor2.Controllers
                     Name = "marat",
                     Surname = "marat",
                     Role = roleRepository.TryGetByName("Admin")
-                }); 
+                });
             }
         }
 
@@ -65,7 +64,7 @@ namespace DictionaryEditor2.Controllers
 
             List<Word> res = JsonConvert.DeserializeObject<List<Word>>(json);
             Dictionary newDict = new Dictionary() { Id = Guid.NewGuid(), Name = "Осетинско-русский" };
-           dictionariesDbRepository.AddDict(newDict);
+            dictionariesDbRepository.AddDict(newDict);
             foreach (var word in res)
             {
                 OssetianWord ossetianWord = new OssetianWord

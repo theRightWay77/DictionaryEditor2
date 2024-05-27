@@ -1,9 +1,15 @@
-﻿<div class="dictionary-home">
+﻿@model string
+
+<div class="dictionary-home">
     <h2>Редактор осетинско-русского словаря</h2>
     <div class="dictionary-home__menu">
-        <div class="btn btn-warning start-redact-button">
-            <a href="#">Начать редактировать</a>
-        </div>
+        @* @if (ViewData["userRole"] == "Admin") *@
+        @if (Model == "Admin")
+        {
+            <div class="btn btn-warning start-redact-button">
+                <a href="#">Начать редактировать</a>
+            </div>
+        }
         <div class="btn btn-warning watch-mod-button">
             <a asp-controller="ResearchMod" asp-action="Index">Режим просмотра</a>
         </div>
@@ -12,4 +18,8 @@
     <div class="btn btn-secondary back-to-home-button">
         <a asp-controller="Home" asp-action="Index">Назад в главное меню</a>
     </div>
+
+   @*  <div class="btn btn-secondary about-devs-button">
+        <a asp-controller="Home" asp-action="Devs">О разработчиках</a>
+    </div> *@
 </div>

@@ -24,6 +24,7 @@ string connection = builder.Configuration.GetConnectionString("dictionary_json")
 //});
 
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
+builder.Services.AddTransient<DictionariesRepository>();
 builder.Services.AddTransient<RussianWordsDbRepository>();
 builder.Services.AddTransient<OssetianWordsDbRepository>();
 builder.Services.AddTransient<ExamplesDbRepository>();

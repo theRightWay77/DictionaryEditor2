@@ -37,5 +37,10 @@ namespace DictionaryEditor2.Admin.Controllers
         {
             return View();
         }
+
+        public IActionResult Devs()
+        {
+            return View();
+        }
     }
 }
