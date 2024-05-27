@@ -1,0 +1,150 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dicts-list {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.one-dict {
+}
+
+    .one-dict > a {
+        text-decoration: none;
+    }
+
+        .one-dict > a:hover {
+            text-decoration: none;
+        }
+
+.about-devs-button {
+    margin-top: 60%;
+}
+
+
+
+
+
+
+
+
+
+.dictionary-home {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dictionary-home__menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    column-gap: 25px;
+}
+
+.start-redact-button {
+}
+
+    .start-redact-button > a {
+        text-decoration: none;
+    }
+
+        .start-redact-button > a:hover {
+            text-decoration: none;
+        }
+
+.watch-mod-button {
+}
+
+    .watch-mod-button > a {
+        text-decoration: none;
+    }
+
+        .watch-mod-button > a:hover {
+            text-decoration: none;
+        }
+
+.back-to-home-button {
+}
+
+    .back-to-home-button > a {
+        text-decoration: none;
+    }
+
+        .back-to-home-button > a :hover {
+            text-decoration: none;
+        }
+
+    .back-to-home-button:hover {
+        text-decoration: none;
+    }
+
+
+
+
+
+
+
+
+
+
+
+.research-mod {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    column-gap: 25px;
+}
+
+.research-mod__words-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.research-mod__words-list__one-word {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 40px;
+}
+
+.research-mod__words-list-osset {
+    display:flex;
+    align-items:flex-start;
+    width:40%
+}
+.research-mod__words-list-russ {
+    display: flex;
+    align-items: flex-start;
+    width: 40%
+}
