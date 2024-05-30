@@ -7,7 +7,7 @@
         @if (Model == "Admin")
         {
             <div class="btn btn-warning start-redact-button">
-                <a href="#">Начать редактировать</a>
+                <a asp-controller="Edit" asp-action="Index">Начать редактировать</a>
             </div>
         }
         <div class="btn btn-warning watch-mod-button">
@@ -19,7 +19,5 @@
         <a asp-controller="Home" asp-action="Index">Назад в главное меню</a>
     </div>
 
-   @*  <div class="btn btn-secondary about-devs-button">
-        <a asp-controller="Home" asp-action="Devs">О разработчиках</a>
-    </div> *@
+   
 </div>

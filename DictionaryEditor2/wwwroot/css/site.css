@@ -203,7 +203,10 @@ body {
     justify-content: center;
     row-gap: 20px;
 }
-
+.one-word__info-secondary-info__russian-words {
+    display: flex;
+    flex-direction: column;
+}
 .one-word__info-secondary-info__examples {
     display: flex;
     flex-direction: column;
@@ -226,7 +229,7 @@ body {
 
 .one-word__info-secondary-info__forms-plural, one-word__info-secondary-info__forms-singular {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: start;
     justify-content: center;
     column-gap: 30px;
@@ -245,6 +248,7 @@ body {
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    row-gap: 10px;
 }
 
 .one-word__info-secondary-info__cases-words {

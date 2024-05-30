@@ -14,7 +14,7 @@ namespace DictionaryEditor2.Controllers
 
         public IActionResult Index()
         {
-            List<OssetianWord> wordsList = ossetianWordsDbRepository.GetProducts();
+            List<OssetianWord> wordsList = ossetianWordsDbRepository.GetWords();
             return View(wordsList);
         }
 

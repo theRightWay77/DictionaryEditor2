@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using DictionaryEditor.Db;
 using DictionaryEditor.Db.Models;
 using Microsoft.AspNetCore.Identity;
+using DictionaryEditor2;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,8 @@ builder.Services.AddTransient<OssetianWordsDbRepository>();
 builder.Services.AddTransient<ExamplesDbRepository>();
 builder.Services.AddTransient<UserDbRepository>();
 builder.Services.AddTransient<RoleDbRepository>();
+builder.Services.AddTransient<RusWordsHashSet>();
+
 
 var app = builder.Build();
 
@@ -49,6 +52,10 @@ app.UseRouting();
 //app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "MyArea",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
