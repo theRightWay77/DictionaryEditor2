@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="home">
+    <h2>Редактор словарей</h2>
+    <h5>Выберите словарь</h5>
+    <div class="dicts-list">
+        <div class="btn btn-warning one-dict">
+            <a asp-controller="Dictionary" asp-action="Index">Осетинско-русский словарь</a>
+        </div>
+    </div>
+
+    <div class="btn btn-secondary about-devs-button">
+        <a asp-controller="Home" asp-action="Devs">О разработчиках</a>
+    </div>
+</div>

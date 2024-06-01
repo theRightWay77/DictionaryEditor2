@@ -1,0 +1,125 @@
+﻿@model OssetianWord
+
+
+<div class="research-mod__one-word">
+    <h2>Режим просмотра</h2>
+    <div class="research-mod__one-word__info">
+        <div class="one-word__info-main-info">
+            <a class="one-word__info-main-info-word">@Model.Word</a>
+
+            @if (Model.Case != null)
+            {
+                <a>@Model.Case</a>
+            }
+            else
+            {
+                <a>-</a>
+            }
+            @switch (Model.Gender)
+            {
+                case Gender.neuter:
+                    <a >ср.р</a>
+                    break;
+                case Gender.female:
+                    <a >жен.р</a>
+                    break;
+                case Gender.male:
+                    <a >муж.р</a>
+                    break;
+                case Gender.notSelected:
+                    <a >-</a>
+                    break;
+
+            }
+
+
+
+        </div>
+        <div class="one-word__info-secondary-info">
+            <div>
+                @foreach (var russianWord in Model.RussianWords)
+                {
+                    <a>@russianWord.Word, </a>
+                }
+            </div>
+            <div class="one-word__info-secondary-info__examples">
+                @foreach (var example in Model.Examples)
+                {
+                    <div class="one-word__info-secondary-info__examples-secse">
+                        <a>@example.Sentence</a>
+                    </div>
+                    <div class="one-word__info-secondary-info__examples-translation">
+                        <a>@example.Translation</a>
+                    </div>
+                }
+            </div>
+            <div class="one-word__info-secondary-info__forms">
+                <div class="one-word__info-secondary-info__forms-singular">
+                    <a>ед. число:</a>
+                    @if (Model.Singular != null)
+                    {
+                        <a>@Model.Singular</a>
+                    }
+                    else
+                    {
+                        <a>-</a>
+                    }
+                    
+                    
+                </div>
+                <div class="one-word__info-secondary-info__forms-plural">
+                    <a>множ. число:</a>
+                    @if (Model.Plural != null)
+                    {
+                        <a>@Model.Plural</a>
+                    }
+                    else
+                    {
+                        <a>-</a>
+                    }
+                </div>
+                <div class="one-word__info-secondary-info__cases">
+
+
+
+                    <div class="one-word__info-secondary-info__cases-labels">
+                        <a>Падеж</a>
+                        <a>Номон (Им)</a>
+                        <a>Гуырынон (Род)</a>
+                        <a>Дæттынон (Дат)</a>
+                        <a>Арæзтон (Направ)</a>
+                        <a>Иртæстон (Отлож)</a>
+                        <a>Ӕддагбынатон (Внеш. мест)</a>
+                        <a>Цæдисон (Внут. мест)</a>
+                        <a>Хуызæнон (Совм)</a>
+                    </div>
+                    <div class="one-word__info-secondary-info__cases-words">
+                        @foreach (var cases in Model.Cases)
+                        {
+                            <a>Слово</a>
+                            <a>@Chek(Model.Cases[0].Nominative)</a>
+                            <a>@Chek(Model.Cases[0].Genitive)</a>
+                            <a>@Chek(Model.Cases[0].Dative)</a>
+                            <a>@Chek(Model.Cases[0].Directional)</a>
+                            <a>@Chek(Model.Cases[0].Postponement)</a>
+                            <a>@Chek(Model.Cases[0].External)</a>
+                            <a>@Chek(Model.Cases[0].Internal)</a>
+                            <a>@Chek(Model.Cases[0].Joint)</a>
+                        }
+                    </div>
+                    @{
+                        string Chek(string str)
+                        {
+                            if (str == null) return "-";
+                            return str;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="btn btn-outline-secondary">
+            <a asp-controller="ResearchMod" asp-action="Index">Назад</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model List<OssetianWord>
+
+<div class="research-mod">
+    <h2>Режим просмотра</h2>
+    <div class="btn btn-secondary back-to-home-button">
+        <a asp-controller="Dictionary" asp-action="Index">Назад в меню словаря</a>
+    </div>
+    <div class="research-mod__words-list">
+        @foreach (var word in Model)
+        {
+            <div class="research-mod__words-list__one-word">
+            <div class="btn-outline-secondary research-mod__words-list-osset ">
+                    <a asp-controller="Edit" asp-action="OneWord" asp-route-id="@word.Id">@word.Word</a>
+            </div>
+            <div class="btn-outline-secondary research-mod__words-list-russ">
+                <a>@word.RussianWords.FirstOrDefault(new RussianWord{Id=Guid.NewGuid(), Word="-"}).Word</a>
+            </div>
+            </div>
+        }
+    </div>
+
+   
+</div>

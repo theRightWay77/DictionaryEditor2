@@ -1,0 +1,135 @@
+﻿@model OssetianWord
+
+<div class="research-mod__one-word">
+    <h2>Режим редактирования</h2>
+    <form method="post">
+        <div class="research-mod__one-word__info">
+            <div class="one-word__info-main-info">
+                <input type="text" name="word" value="@Model.Word" class="form-control" />
+
+                @if (Model.Case != null)
+                {
+                    <input type="text" name="Case" value="@Model.Case" class="form-control" />
+                }
+                else
+                {
+                    <input type="text" name="Case" value="-падеж" class="form-control" />
+                }
+
+                <select name="tense" class="form-control">
+                    <option value="thePast">прош.вр</option>
+                    <option value="thePresent">наст.вр</option>
+                    <option value="theFuture">будущ.вр</option>
+                </select>
+            </div>
+
+            <div class="one-word__info-secondary-info">
+                <div class="one-word__info-secondary-info__russian-words">
+                    <a>переводы слова</a>   
+                     @* <input type="text" name="rusWords" value="@Tranlations()" class="form-control" /> *@
+                    
+                    
+                    <textarea name="rusWords" placeholder="" cols="100" type="text">@Tranlations()</textarea>
+         
+                </div>
+                <div class="one-word__info-secondary-info__examples">
+                    @for (int i = 0; i < Model.Examples.Count; i++)
+                    {
+                        <div class="one-word__info-secondary-info__examples-secse">
+                            <input type="text" name="Examples[@i].Sentence" value="@Model.Examples[i].Sentence" class="form-control" />
+                        </div>
+                        <div class="one-word__info-secondary-info__examples-translation">
+                            <input type="text" name="Examples[@i].Translation" value="@Model.Examples[i].Translation" class="form-control" />
+                        </div>
+                    }
+                </div>
+                <div class="one-word__info-secondary-info__forms">
+                    <div class="one-word__info-secondary-info__forms-singular">
+                        <label>ед. число:</label>
+                        @if (Model.Singular != null)
+                        {
+                            <input type="text" name="singular" value="@Model.Singular" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" name="singular" value="-" class="form-control" />
+                        }
+                    </div>
+                    <div class="one-word__info-secondary-info__forms-plural">
+                        <label>множ. число:</label>
+                        @if (Model.Plural != null)
+                        {
+                            <input type="text" name="plural" value="@Model.Plural" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" name="plural" value="-" class="form-control" />
+                        }
+                    </div>
+                    <div class="one-word__info-secondary-info__cases">
+                        <div class="one-word__info-secondary-info__cases-labels">
+                            <label>Падеж</label>
+                            <label>Номон (Им)</label>
+                            <label>Гуырынон (Род)</label>
+                            <label>Дæттынон (Дат)</label>
+                            <label>Арæзтон (Направ)</label>
+                            <label>Иртæстон (Отлож)</label>
+                            <label>Ӕддагбынатон (Внеш. мест)</label>
+                            <label>Цæдисон (Внут. мест)</label>
+                            <label>Хуызæнон (Совм)</label>
+                        </div>
+                        <div class="one-word__info-secondary-info__cases-words">
+                            @if (Model.Cases != null && Model.Cases.Count > 0)
+                            {
+                                <input type="text" name="Cases[0].Nominative" value="@Check(Model.Cases[0].Nominative)" class="form-control" />
+                                <input type="text" name="Cases[0].Genitive" value="@Check(Model.Cases[0].Genitive)" class="form-control" />
+                                <input type="text" name="Cases[0].Dative" value="@Check(Model.Cases[0].Dative)" class="form-control" />
+                                <input type="text" name="Cases[0].Directional" value="@Check(Model.Cases[0].Directional)" class="form-control" />
+                                <input type="text" name="Cases[0].Postponement" value="@Check(Model.Cases[0].Postponement)" class="form-control" />
+                                <input type="text" name="Cases[0].External" value="@Check(Model.Cases[0].External)" class="form-control" />
+                                <input type="text" name="Cases[0].Internal" value="@Check(Model.Cases[0].Internal)" class="form-control" />
+                                <input type="text" name="Cases[0].Joint" value="@Check(Model.Cases[0].Joint)" class="form-control" />
+                            }
+                            else
+                            {
+                                <input type="text" name="Cases[0].Nominative" value="-" class="form-control" />
+                                <input type="text" name="Cases[0].Genitive" value="-" class="form-control" />
+                                <input type="text" name="Cases[0].Dative" value="-" class="form-control" />
+                                <input type="text" name="Cases[0].Directional" value="-" class="form-control" />
+                                <input type="text" name="Cases[0].Postponement" value="-" class="form-control" />
+                                <input type="text" name="Cases[0].External" value="-" class="form-control" />
+                                <input type="text" name="Cases[0].Internal" value="-" class="form-control" />
+                                <input type="text" name="Cases[0].Joint" value="-" class="form-control" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button asp-controller="Edit" asp-action="SaveChanges" asp-route-id="@Model.Id" type="submit" class="btn btn-primary">Сохранить</button>
+            <a asp-controller="Edit" asp-action="Index" class="btn btn-secondary">Назад</a>
+
+        </div>
+    </form>
+</div>
+
+@{
+    string Check(string str)
+    {
+
+        return string.IsNullOrEmpty(str) ? "-" : str;
+    }
+}
+@{
+    string Tranlations()
+    {
+        string trans = "";
+        @for (int i = 0; i < Model.RussianWords.Count; i++)
+        {
+            trans += Model.RussianWords[i].Word + ", ";
+        }
+        return trans;
+    }
+}
+
