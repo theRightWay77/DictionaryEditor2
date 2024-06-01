@@ -6,7 +6,7 @@ using System.Linq;
 
 
 namespace DictionaryEditor2.Controllers
-{ //алвоаыжав
+{ 
     public class EditController : Controller
     {
         private readonly OssetianWordsDbRepository ossetianWordsDbRepository;
